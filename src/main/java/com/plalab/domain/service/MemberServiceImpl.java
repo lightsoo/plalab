@@ -14,7 +14,6 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberRepository repository;
 
-
     @Override
     public Member getMember(Integer id) {
         Member member = repository.findById(id);
