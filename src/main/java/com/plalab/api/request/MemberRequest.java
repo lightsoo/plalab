@@ -10,11 +10,6 @@ public class MemberRequest {
     private String name;
     private Integer age;
 
-//    private MemberRequest(String name, Integer age){
-//        this.name = name;
-//        this.age = age;
-//    }
-
     public static class Builder{
         private String name;
         private Integer age;
@@ -36,6 +31,10 @@ public class MemberRequest {
 
         public static Builder newBuilder(String name, Integer age){
             return new Builder(name, age);
+        }
+
+        public static Builder newBuilder(MemberRequest memberRequest){
+            return new Builder(memberRequest.getName(), memberRequest.getAge());
         }
 
         public MemberRequest build() {

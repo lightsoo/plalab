@@ -14,6 +14,7 @@ public class MemberResponse {
     private Integer age;
 
     public static MemberResponse newInstance(Member member){
+
         return new MemberResponse(member.getId(), member.getName(), member.getAge());
     }
 }
