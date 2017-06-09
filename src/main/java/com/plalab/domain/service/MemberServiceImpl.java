@@ -1,6 +1,5 @@
 package com.plalab.domain.service;
 
-import com.plalab.api.request.MemberRequest;
 import com.plalab.domain.model.Member;
 import com.plalab.domain.model.support.MemberNotFound;
 import com.plalab.domain.repository.MemberRepository;

@@ -3,6 +3,7 @@ package com.plalab.api;
 import com.plalab.api.request.MemberRequest;
 import com.plalab.api.response.MemberResponse;
 import com.plalab.domain.model.Member;
+import com.plalab.domain.model.support.InvalidArgumentException;
 import com.plalab.domain.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,14 +20,16 @@ public class MemberController {
     }
 
     @PostMapping("/member")
-    public MemberResponse createMember(@RequestBody MemberRequest memberRequest){
+    public MemberResponse createMember(@RequestBody MemberRequest memberRequest) {
 //        MemberRequest validMember = MemberRequest.Builder
 //                .newBuilder(memberRequest.getName(), memberRequest.getAge()).build();
-        MemberRequest validMember = MemberRequest.Builder.newBuilder(memberRequest).build();
-
-        Member member = Member.builder(validMember).build();
-
-        return MemberResponse.newInstance(service.createMember(member));
+        try {
+            MemberRequest validMember = MemberRequest.Builder.newBuilder(memberRequest).build();
+            Member member = Member.builder(validMember).build();
+            return MemberResponse.newInstance(service.createMember(member));
+        }catch (IllegalStateException e){
+            throw new InvalidArgumentException(e.getMessage());
+        }
     }
 
     @PutMapping("/members/{id}")
