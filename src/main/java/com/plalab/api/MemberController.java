@@ -19,7 +19,8 @@ public class MemberController {
         return MemberResponse.newInstance(service.getMember(id));
     }
 
-    @PostMapping("/member")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/members")
     public MemberResponse createMember(@RequestBody MemberRequest memberRequest) {
 //        MemberRequest validMember = MemberRequest.Builder
 //                .newBuilder(memberRequest.getName(), memberRequest.getAge()).build();
