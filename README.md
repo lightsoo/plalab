@@ -1,7 +1,7 @@
 # plalab-helloworld
 
 ### Description
-Plalab hello world소스
+Plalab 소스
 
 ### How to Test
 Postman...
