@@ -43,7 +43,7 @@ public class MemberControllerTest {
     @MockBean
     MemberService service;
 
-    public static final String baseUrl = "/members";
+    private final String baseUrl = "/members";
 
     private Integer testId;
     private MemberRequest memberRequest;
@@ -62,7 +62,7 @@ public class MemberControllerTest {
 
 
     @Test
-    public void getMember() throws Exception {
+    public void testGetMember() throws Exception {
 
         given(service.getMember(anyInt())).willReturn(member);
 
@@ -77,7 +77,7 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void getMember404() throws Exception {
+    public void testGetMember404() throws Exception {
         given(service.getMember(anyInt())).willThrow(MemberNotFound.class);
 
         mvc.perform(get(baseUrl + "/{id}", testId))
@@ -88,7 +88,7 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void createMember() throws Exception {
+    public void testCreateMember() throws Exception {
         given(service.createMember(any(Member.class))).willReturn(member);
 
         mvc.perform(post(baseUrl)
@@ -104,7 +104,7 @@ public class MemberControllerTest {
     }
 
     @Test
-    public void createMember400() throws Exception {
+    public void testCreateMember400() throws Exception {
         given(service.createMember(any(Member.class))).willThrow(InvalidArgumentException.class);
         memberRequest.setAge(null);
 
@@ -117,10 +117,9 @@ public class MemberControllerTest {
         verify(service, times(0)).createMember(any(Member.class));
     }
 
-
 //    @Test
-//    public void createMember409() throws Exception {
-//        given(service.createMember(any(Member.class))).willThrow(MemberNotFound.class);
+//    public void testCreateApi409() throws Exception {
+//        given(service.createMember(any(Member.class))).willThrow(ConflictException.class);
 //        memberRequest.setAge(null);
 //
 //        mvc.perform(post("/members")
@@ -131,6 +130,4 @@ public class MemberControllerTest {
 //
 //        verify(service, times(0)).createMember(any(Member.class));
 //    }
-
-
 }

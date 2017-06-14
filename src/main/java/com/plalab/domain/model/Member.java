@@ -15,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder(builderMethodName = "hiddenBuilder")
 public class Member {
-    @Id @GeneratedValue
+    @Id
     private Integer id;
     @Column
     private String name;

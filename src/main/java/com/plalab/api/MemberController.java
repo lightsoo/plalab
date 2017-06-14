@@ -14,6 +14,8 @@ public class MemberController {
     @Autowired
     private MemberService service;
 
+    private final String baseUrl = "/members";
+
     @GetMapping("/members/{id}")
     public MemberResponse getMember(@PathVariable Integer id){
         return MemberResponse.newInstance(service.getMember(id));
@@ -37,7 +39,7 @@ public class MemberController {
     public MemberResponse putMember(@PathVariable Integer id, @RequestBody MemberRequest body){
 
 //        update할 필드가 필수는 아니라는 가정.
-//        update할때는 RequestDTO의 required/ optional valid확인을 안한다
+//        update할때는 RequestDTO의 required/ optional valid 확인을 안한다
 //        MemberRequest validMember = MemberRequest.Builder.newBuilder(body).build();
 
         Member member = Member.builder(body).build();

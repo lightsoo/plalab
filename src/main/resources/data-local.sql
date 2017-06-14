@@ -1,0 +1,1 @@
+# INSERT INTO user VALUE ('admin', 'lightsoo', 'admin');

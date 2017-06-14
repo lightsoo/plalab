@@ -1,6 +1,7 @@
 package com.plalab.domain.service;
 
 import com.plalab.domain.model.Member;
+import com.plalab.domain.model.support.ConflictException;
 import com.plalab.domain.model.support.MemberNotFound;
 import com.plalab.domain.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member createMember(Member member){
+//        if(repository.findById(member.getId()) != null){
+//            throw new ConflictException("Member's ID is Already exists");
+//        }
         return repository.save(member);
     }
 
