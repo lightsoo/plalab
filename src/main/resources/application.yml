@@ -1,0 +1,35 @@
+server:
+  port: 8808
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  profiles: local
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: create
+      show_sql: true
+  datasource:
+    platform: local
+    validation-query: SELECT 1
+    url: jdbc:mysql://localhost/plalab?autoReconnect=true&useUnicode=true&characterEncoding=utf8&&tinyInt1isBit=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+---
+spring:
+  profiles: test
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: test
+    validation-query: SELECT 1
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:ac
+    username: sa
+    password:

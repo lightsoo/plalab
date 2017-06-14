@@ -1,4 +1,8 @@
 # plalab-helloworld
 
 ### Description
-플라랩 스터디 소스
+Plalab 소스
+
+### How to Test
+Postman...
+https://www.getpostman.com/collections/7e86acf64f20b05c755f
